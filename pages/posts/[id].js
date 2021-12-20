@@ -1,4 +1,11 @@
+/**
+ * NB testing: 
+ * ini www.domain.com/posts/[slug]
+ * bisa menggunakan www.domain.com/[slug] secara langsung dg memindahkan ke pages
+ */
+
 import Layout from '../../components/layout'
+import Head from 'next/head'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 
 export async function getStaticPaths() {
@@ -21,6 +28,9 @@ export async function getStaticProps({ params }) {
 export default function Post({ postData }) {
   return (
     <Layout>
+      <Head>
+        <title>{postData.title} - Blog</title>
+      </Head>
       {postData.title}
       <br />
       {postData.id}
